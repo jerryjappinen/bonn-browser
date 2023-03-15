@@ -1,0 +1,42 @@
+# Documentation
+# https://docs.github.com/en/actions/creating-actions/creating-a-composite-action
+
+# Usage in your workflow YML:
+# jobs:
+#   lint:
+#     runs-on: ubuntu-latest
+#     steps:
+#       - uses: jerryjappinen/bonn/.github/actions/run
+#         with:
+#           script: 'lint'
+
+name: 'bonn-npm-run'
+description: 'Installs dependencies and runs an npm script in your repo'
+inputs:
+  script:
+    description: 'Name of script to run'
+    required: true
+runs:
+  using: "composite"
+  steps:
+
+    # Self-checkout
+    - name: Initial checkout
+      uses: actions/checkout@v3
+
+    # Setup
+    - name: Node setup
+      uses: actions/setup-node@v3
+      with:
+        node-version-file: '.nvmrc'
+        cache: 'npm'
+
+    # Install
+    - name: Install dependencies
+      shell: bash
+      run: npm install
+
+    # Run script
+    - name: Run script
+      shell: bash
+      run: npm run ${{ inputs.script }}

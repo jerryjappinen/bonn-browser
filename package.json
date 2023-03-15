@@ -1,0 +1,46 @@
+{
+  "name": "bonn-browser",
+  "version": "0.1.0",
+  "description": "Convenient wrapper for Chromium",
+  "private": false,
+  "files": [
+    "dist/",
+    "src/",
+    "README.md"
+  ],
+  "engines": {
+    "node": "16.x"
+  },
+  "license": "MIT",
+  "scripts": {
+    "clean": "rm -rf css dist",
+    "lint": "eslint --ignore-path .gitignore \"**/*.{js,cjs,mjs,ts,vue}\"",
+    "lint:fix": "npm run lint -- --fix",
+    "v": "vercel dev",
+    "test": "vitest",
+    "test:w": "vitest run"
+  },
+  "author": {
+    "name": "Jerry Jäppinen",
+    "url": "https://github.com/jerryjappinen"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/jerryjappinen/bonn-browser.git"
+  },
+  "dependencies": {
+    "chrome-aws-lambda": "^10.1.0",
+    "puppeteer-core": "^10.4.0"
+  },
+  "devDependencies": {
+    "eslint": "^8.36.0",
+    "eslint-config-standard": "^17.0.0",
+    "eslint-plugin-import": "^2.27.5",
+    "eslint-plugin-node": "^11.1.0",
+    "eslint-plugin-nuxt": "^4.0.0",
+    "eslint-plugin-promise": "^6.1.1",
+    "vercel": "^28.16.15",
+    "vite": "^4.1.4",
+    "vitest": "^0.29.2"
+  }
+}

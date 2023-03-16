@@ -21,7 +21,7 @@ export default async () => {
 
   // eslint-disable-next-line import/no-named-as-default-member
   const browser = await puppeteer.launch(
-    isDev
+    isDev()
       ? devOptions
       : {
           args: [
